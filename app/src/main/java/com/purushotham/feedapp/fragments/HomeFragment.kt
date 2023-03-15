@@ -82,6 +82,7 @@ class HomeFragment : Fragment(), AddPostPopupFragment.DialogNextButtonClickListe
             }
 
         })
+        binding.tvToolbarTitle.text = AppConstants.CITY
 
     }
 

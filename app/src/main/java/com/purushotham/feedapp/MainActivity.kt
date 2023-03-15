@@ -4,15 +4,20 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
@@ -50,6 +55,13 @@ class MainActivity : AppCompatActivity() {
                     }else{
 
                         //Toast.makeText(this, "${location.latitude}, ${location.longitude}", Toast.LENGTH_SHORT).show()
+                        Geocoder(this, Locale("in"))
+                            .getAddress(location.latitude, location.longitude) { address: android.location.Address? ->
+                                if (address != null) {
+                                    AppConstants.CITY = address.locality
+
+                                }
+                            }
                         AppConstants.LAT_VALUE = location.latitude.toString()
                         AppConstants.LANG_VALUE = location.longitude.toString()
                     }
@@ -115,6 +127,27 @@ class MainActivity : AppCompatActivity() {
                 requestPermission()
                // Toast.makeText(applicationContext, "Denied", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    fun Geocoder.getAddress(
+        latitude: Double,
+        longitude: Double,
+        address: (android.location.Address?) -> Unit
+    ) {
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            getFromLocation(latitude, longitude, 1) { address(it.firstOrNull()) }
+            return
+        }
+
+        try {
+            address(getFromLocation(latitude, longitude, 1)?.firstOrNull())
+        } catch(e: Exception) {
+            //will catch if there is an internet problem
+            address(null)
         }
     }
 }
