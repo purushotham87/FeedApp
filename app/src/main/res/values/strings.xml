@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">FeedApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password">Password</string>
+    <string name="re_password">Confirm Password</string>
+    <string name="already_registered">Already Registered !!</string>
+    <string name="signin">Sing in</string>
+    <string name="not_regisered">Not Registered Yet !!</string>
+    <string name="post_title">Post Title</string>
+    <string name="post">Post</string>
+    <string name="post_desription">Desription</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="home">Home</string>
+    <string name="no_feed_posted">No Feed Posted</string>
+</resources>

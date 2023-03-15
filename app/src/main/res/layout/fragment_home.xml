@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.HomeFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_500"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivClose"
+                android:layout_width="5dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.1"
+                android:scaleType="fitStart"
+                 />
+
+            <TextView
+                android:id="@+id/tv_toolbar_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="40dp"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="@string/home"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivLogout"
+                android:layout_width="5dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.1"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_logout"
+                />
+
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvPost"
+        android:layout_width="409dp"
+        android:layout_height="797dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/toolbar"
+        />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+         />
+
+    <TextView
+        android:id="@+id/tvDefaultMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_feed_posted"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textColor="@color/gray"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:visibility="gone"/>
+</RelativeLayout>
